@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "api-game-research")
-@org.springframework.data.elasticsearch.annotations.Document(indexName = "api-game-research")
+@Document(indexName = "api-game-research")
 public class ModelGameResearch {
 
     @Id

@@ -1,6 +1,6 @@
 package com.uca.gameresearch.services;
 
-import com.uca.gameresearch.entity.EntityGameResearch;
+import com.uca.gameresearch.model.ModelGameResearch;
 import com.uca.gameresearch.repositories.MongoGameResearchRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,17 +15,17 @@ public abstract class MongoServices implements InterfaceServices{
         this.mongoGameResearchRepository = mongoGameResearchRepository1;
     }
     @Override
-    public List<EntityGameResearch> findAll() {
+    public List<ModelGameResearch> findAll() {
         return mongoGameResearchRepository.findAll();
     }
 
     @Override
-    public EntityGameResearch findById(Serializable id) {
+    public ModelGameResearch findById(Serializable id) {
         return null;
     }
 
     @Override
-    public EntityGameResearch save(EntityGameResearch entity) {
+    public ModelGameResearch save(ModelGameResearch entity) {
         return null;
     }
 
@@ -35,7 +35,7 @@ public abstract class MongoServices implements InterfaceServices{
     }
 
     @Override
-    public EntityGameResearch update(EntityGameResearch entity) {
+    public ModelGameResearch update(ModelGameResearch entity) {
         return null;
     }
 }
