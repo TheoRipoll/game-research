@@ -1,18 +1,19 @@
-package com.example.gameresearch.entity;
+package com.uca.gameresearch.model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EntityGameResearch {
+@Document(collection = "api-game-research")
+@org.springframework.data.elasticsearch.annotations.Document(indexName = "api-game-research")
+public class ModelGameResearch {
 
+    @Id
     private Long id;
     private String slug;
     private String name;

@@ -1,13 +1,13 @@
-package com.example.gameresearch.services;
+package com.uca.gameresearch.services;
 
-import com.example.gameresearch.entity.EntityGameResearch;
-import com.example.gameresearch.repositories.ElasticsearchGameResearchRepository;
+import com.uca.gameresearch.entity.EntityGameResearch;
+import com.uca.gameresearch.repositories.ElasticsearchGameResearchRepository;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
 @Service
-public class ElasticsearchServices implements InterfaceServices{
+public abstract class ElasticsearchServices implements InterfaceServices{
     private final ElasticsearchGameResearchRepository elasticsearchGameResearchRepository;
     public ElasticsearchServices(ElasticsearchGameResearchRepository elasticsearchGameResearchRepository) {
     this.elasticsearchGameResearchRepository = elasticsearchGameResearchRepository;
@@ -25,7 +25,7 @@ public class ElasticsearchServices implements InterfaceServices{
 
     @Override
     public EntityGameResearch save(EntityGameResearch entity) {
-        return null;
+        return this.elasticsearchGameResearchRepository.save(entity);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class ElasticsearchServices implements InterfaceServices{
     }
 
     @Override
-    public void update(EntityGameResearch entity) {
-
+    public EntityGameResearch update(EntityGameResearch entity) {
+        return null;
     }
 }

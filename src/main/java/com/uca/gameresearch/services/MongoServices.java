@@ -1,12 +1,14 @@
-package com.example.gameresearch.services;
+package com.uca.gameresearch.services;
 
-import com.example.gameresearch.entity.EntityGameResearch;
-import com.example.gameresearch.repositories.MongoGameResearchRepository;
+import com.uca.gameresearch.entity.EntityGameResearch;
+import com.uca.gameresearch.repositories.MongoGameResearchRepository;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class MongoServices implements InterfaceServices{
+@Service
+public abstract class MongoServices implements InterfaceServices{
 
     private final MongoGameResearchRepository mongoGameResearchRepository;
     public MongoServices(MongoGameResearchRepository mongoGameResearchRepository, MongoGameResearchRepository mongoGameResearchRepository1) {
@@ -33,7 +35,7 @@ public class MongoServices implements InterfaceServices{
     }
 
     @Override
-    public void update(EntityGameResearch entity) {
-
+    public EntityGameResearch update(EntityGameResearch entity) {
+        return null;
     }
 }
