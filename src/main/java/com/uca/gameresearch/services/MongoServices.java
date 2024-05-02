@@ -1,41 +1,47 @@
 package com.uca.gameresearch.services;
 
-import com.uca.gameresearch.model.ModelGameResearch;
+import com.uca.gameresearch.model.MongoModel;
 import com.uca.gameresearch.repositories.MongoGameResearchRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
+@Qualifier("mongoService")
 @Service
-public abstract class MongoServices implements InterfaceServices{
+public class MongoServices implements InterfaceServices<MongoModel>{
 
     private final MongoGameResearchRepository mongoGameResearchRepository;
-    public MongoServices(MongoGameResearchRepository mongoGameResearchRepository, MongoGameResearchRepository mongoGameResearchRepository1) {
-        this.mongoGameResearchRepository = mongoGameResearchRepository1;
+
+    public MongoServices(@Qualifier("mongoRepo") MongoGameResearchRepository mongoGameResearchRepository) {
+        this.mongoGameResearchRepository = mongoGameResearchRepository;
     }
+
     @Override
-    public List<ModelGameResearch> findAll() {
+    public List<MongoModel> findAll() {
         return mongoGameResearchRepository.findAll();
     }
 
     @Override
-    public ModelGameResearch findById(Serializable id) {
+    public Optional<MongoModel> findById(String id) {
         return null;
     }
 
     @Override
-    public ModelGameResearch save(ModelGameResearch entity) {
+    public MongoModel save(MongoModel entity) {
         return null;
     }
 
     @Override
-    public void deleteById(Serializable id) {
+    public void deleteById(String id) {
 
     }
 
     @Override
-    public ModelGameResearch update(ModelGameResearch entity) {
+    public MongoModel update(MongoModel entity) {
         return null;
     }
 }

@@ -1,19 +1,15 @@
 package com.uca.gameresearch.model;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
-import lombok.Data;
-import org.springframework.data.elasticsearch.annotations.Document;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(indexName = "api-game-research")
 public class ModelGameResearch {
 
     @Id
-    private Long id;
+    private String id;
     private String slug;
     private String name;
     private Integer metacritic;
