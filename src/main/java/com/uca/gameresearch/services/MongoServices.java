@@ -20,27 +20,30 @@ public class MongoServices implements InterfaceServices<MongoModel>{
         this.mongoGameResearchRepository = mongoGameResearchRepository;
     }
 
-    @Override
     public List<MongoModel> findAll() {
         return mongoGameResearchRepository.findAll();
     }
 
-    @Override
     public Optional<MongoModel> findById(String id) {
         return null;
     }
 
-    @Override
     public MongoModel save(MongoModel entity) {
         return null;
     }
 
-    @Override
     public void deleteById(String id) {
 
     }
 
-    @Override
+    public void deleteAll() {
+
+    }
+
+    public void delete(MongoModel entity) {
+
+    }
+
     public MongoModel update(MongoModel entity) {
         return null;
     }

@@ -1,7 +1,9 @@
 package com.uca.gameresearch.services;
 
 import com.uca.gameresearch.model.ElasticModel;
+import com.uca.gameresearch.model.ModelGameResearch;
 import com.uca.gameresearch.repositories.ElasticsearchGameResearchRepository;
+import com.uca.gameresearch.repositories.InterfaceRepositories;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,26 +20,19 @@ public class ElasticsearchServices implements InterfaceServices<ElasticModel>{
 
     private final ElasticsearchGameResearchRepository elasticsearchGameResearchRepository;
 
-    public ElasticsearchServices(@Qualifier("elasticRepo") ElasticsearchGameResearchRepository elasticsearchGameResearchRepository) {
+    @Autowired
+    public ElasticsearchServices(ElasticsearchGameResearchRepository elasticsearchGameResearchRepository) {
         this.elasticsearchGameResearchRepository = elasticsearchGameResearchRepository;
     }
 
-    public ElasticsearchServices() {
-        this.elasticsearchGameResearchRepository = null;
-    }
-
-    @Override
     public List<ElasticModel> findAll() {
-        Iterable<ElasticModel> gameResearches = elasticsearchGameResearchRepository.findAll();
-        return (List<ElasticModel>) gameResearches;
+        return (List<ElasticModel>) this.elasticsearchGameResearchRepository.findAll();
     }
 
-    @Override
     public Optional<ElasticModel> findById(String id) {
         return this.elasticsearchGameResearchRepository.findById(id);
     }
 
-    @Override
     public ElasticModel save(ElasticModel entity) {
         try {
             assert this.elasticsearchGameResearchRepository != null;
@@ -48,7 +43,6 @@ public class ElasticsearchServices implements InterfaceServices<ElasticModel>{
         return null;
     }
 
-    @Override
     public void deleteById(String id) {
         this.elasticsearchGameResearchRepository.deleteById(id);
     }
@@ -61,7 +55,6 @@ public class ElasticsearchServices implements InterfaceServices<ElasticModel>{
         this.elasticsearchGameResearchRepository.delete(entity);
     }
 
-    @Override
     public ElasticModel update(ElasticModel entity) {
         return this.elasticsearchGameResearchRepository.save(entity);
     }

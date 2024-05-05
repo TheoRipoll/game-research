@@ -3,6 +3,7 @@ package com.uca.gameresearch.model;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
