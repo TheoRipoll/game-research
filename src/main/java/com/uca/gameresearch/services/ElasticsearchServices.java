@@ -33,4 +33,18 @@ public class ElasticsearchServices implements InterfaceServices<ElasticModel> {
         return this.elasticsearchGameResearchRepository.findById(id);
     }
 
+    public ElasticModel save(ElasticModel entity) {
+        try {
+            assert this.elasticsearchGameResearchRepository != null;
+            return this.elasticsearchGameResearchRepository.save(entity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void deleteById(String id) {
+        this.elasticsearchGameResearchRepository.deleteById(id);
+    }
+
 }
