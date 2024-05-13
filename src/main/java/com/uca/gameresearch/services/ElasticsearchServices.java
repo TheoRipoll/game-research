@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Qualifier("elasticService")
 @Service
-public class ElasticsearchServices implements InterfaceServices<ElasticModel> {
+public class ElasticsearchServices implements InterfaceServices<ElasticModel>{
 
     private static final String INDEX = "api-game-infos";
 
@@ -46,5 +46,10 @@ public class ElasticsearchServices implements InterfaceServices<ElasticModel> {
     public void deleteById(String id) {
         this.elasticsearchGameResearchRepository.deleteById(id);
     }
+
+    public void deleteAll() {
+        this.elasticsearchGameResearchRepository.deleteAll();
+    }
+
 
 }
