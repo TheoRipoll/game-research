@@ -1,36 +1,36 @@
 package com.uca.gameresearch.controllers;
 
-
 import com.uca.gameresearch.model.ElasticModel;
 import com.uca.gameresearch.model.ModelGameResearch;
-import com.uca.gameresearch.services.ElasticsearchServices;
 import com.uca.gameresearch.services.InterfaceServices;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/game-infos")
+@RequestMapping("/api/elastic")
 public class ElasticsearchController {
 
     private final InterfaceServices<ElasticModel> interfaceServices;
 
     @Autowired
-    public ElasticsearchController(@Qualifier("elasticService") InterfaceServices<ElasticModel> interfaceServices) {
+    public ElasticsearchController(InterfaceServices<ElasticModel> interfaceServices) {
         this.interfaceServices = interfaceServices;
     }
 
     @PostMapping("/create")
     public ResponseEntity<ModelGameResearch> create(@RequestBody ElasticModel modelGameResearch){
-        ModelGameResearch modelGameResearch1 = this.interfaceServices.save(modelGameResearch);
-        return new ResponseEntity<>(modelGameResearch1, HttpStatus.CREATED);
+        try {
+            ElasticModel modelGameResearch1 = this.interfaceServices.save(modelGameResearch);
+            return new ResponseEntity<>(modelGameResearch1, HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/{id}")
@@ -43,35 +43,55 @@ public class ElasticsearchController {
 
     @GetMapping
     public ResponseEntity<List<ElasticModel>> findAll() {
-        Iterable<ElasticModel> infos = this.interfaceServices.findAll();
-        List<ElasticModel> infosList = new ArrayList<>();
-        infos.forEach(infosList::add);
-        return new ResponseEntity<>(infosList, HttpStatus.OK);
+        try {
+            List<ElasticModel> modelGameResearches = this.interfaceServices.findAll();
+            return new ResponseEntity<>(modelGameResearches, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ElasticModel> update(@PathVariable String id, @RequestBody ElasticModel modelGameResearch) {
         Optional<ElasticModel> optionalInfo = this.interfaceServices.findById(id);
-
-        if (optionalInfo.isPresent()) {
-            modelGameResearch.setId(id);
-            this.interfaceServices.save(modelGameResearch);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        try {
+            if (optionalInfo.isPresent()) {
+                modelGameResearch.setId(id);
+                return new ResponseEntity<>(this.interfaceServices.update(modelGameResearch), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") String id) {
         Optional<ElasticModel> optionalInfo = this.interfaceServices.findById(id);
+        try {
+            if (optionalInfo.isPresent()) {
+                this.interfaceServices.deleteById(id);
+                return new ResponseEntity<>(HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
-        if (optionalInfo.isPresent()) {
-            this.interfaceServices.deleteById(optionalInfo.get().getId());
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @DeleteMapping("/deleteAll")
+    public ResponseEntity<Void> deleteAll() {
+        try {
+            this.interfaceServices.deleteAll();
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
