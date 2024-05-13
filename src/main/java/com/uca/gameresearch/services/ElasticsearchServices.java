@@ -55,5 +55,7 @@ public class ElasticsearchServices implements InterfaceServices<ElasticModel>{
         this.elasticsearchGameResearchRepository.delete(entity);
     }
 
-
+    public ElasticModel update(ElasticModel entity) {
+        return this.elasticsearchGameResearchRepository.save(entity);
+    }
 }
