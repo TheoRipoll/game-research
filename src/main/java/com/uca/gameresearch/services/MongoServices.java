@@ -68,6 +68,11 @@ public class MongoServices implements InterfaceServices<MongoModel>{
     }
 
     public MongoModel update(MongoModel entity) {
-        return null;
+        try {
+            return mongoGameResearchRepository.save(entity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
