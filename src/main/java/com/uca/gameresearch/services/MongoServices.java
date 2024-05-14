@@ -30,7 +30,12 @@ public class MongoServices implements InterfaceServices<MongoModel>{
     }
 
     public Optional<MongoModel> findById(String id) {
-        return null;
+        try {
+            return mongoGameResearchRepository.findById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Optional.empty();
+        }
     }
 
     public MongoModel save(MongoModel entity) {
