@@ -56,7 +56,11 @@ public class MongoServices implements InterfaceServices<MongoModel>{
     }
 
     public void deleteAll() {
-
+        try {
+            mongoGameResearchRepository.deleteAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void delete(MongoModel entity) {
