@@ -21,7 +21,12 @@ public class MongoServices implements InterfaceServices<MongoModel>{
     }
 
     public List<MongoModel> findAll() {
-        return mongoGameResearchRepository.findAll();
+        try {
+            return mongoGameResearchRepository.findAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Optional<MongoModel> findById(String id) {
