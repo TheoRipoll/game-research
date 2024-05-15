@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/mongo")
+
 public class MongoController {
 
     private final InterfaceServices<MongoModel> interfaceServices;
@@ -59,4 +60,28 @@ public class MongoController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @DeleteMapping("/deleteAll")
+    public ResponseEntity<Object> deleteAll() {
+        try {
+            this.interfaceServices.deleteAll();
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody MongoModel modelGameResearch) {
+        try {
+            modelGameResearch.setId(id);
+            this.interfaceServices.update(modelGameResearch);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
 }
