@@ -9,7 +9,12 @@ Editer des données existantes
 Rechercher une donnée précise
 Réaliser des recherches avec filtres
 
+## Description du DataSet: 
+Le DataSet est composé d'une collection (jeux vidéos qui contient plusieurs documents comme le nom du jeu, la date de sortie, etc...
+
+
 ## Liens vers le DataSet : https://www.kaggle.com/datasets/jummyegg/rawg-game-dataset
+
 
 
 Concernant le rendu de notre projet, il se fera en local via un système de docker.
