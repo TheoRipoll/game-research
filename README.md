@@ -10,7 +10,7 @@ Rechercher une donnée précise
 Réaliser des recherches avec filtres
 
 ## Description du DataSet: 
-Le DataSet est composé d'une collection (jeux vidéos qui contient plusieurs documents comme le nom du jeu, la date de sortie, etc...
+Le DataSet est composé d'une collection (jeux vidéos) qui contient plusieurs documents comme le nom du jeu, la date de sortie, etc...
 C'est un fichier .csv que l'ont a converti en .json.
 
 
