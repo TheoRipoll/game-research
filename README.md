@@ -22,7 +22,7 @@ Le DataSet est composé d'une collection (jeux vidéos) qui contient plusieurs d
 C'est un fichier .csv que l'ont a converti en .json.
 
 
-## Liens vers le DataSet : https://www.kaggle.com/datasets/jummyegg/rawg-game-dataset
+## [Liens vers le DataSet] (https://www.kaggle.com/datasets/jummyegg/rawg-game-dataset).
 
 
 
