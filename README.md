@@ -1,5 +1,13 @@
 # game-research
 
+# Collaborateurs: 
+
+RIPOL Theo
+DIALLO Mouhamed-Gando
+BRUNETTI Julien
+GALLICE Evan
+AAROUR Mouna
+
 # Description
 Nous utiliserons le moteur MongoDB (obligatoire) et ElasticSearch pour ce projet.
 Nous allons réaliser une application permettant d'interagir avec un Dataset ayant pour thème les jeux vidéo,  il y aura un formulaire par moteur, et notre application permettra entre autres de : 
