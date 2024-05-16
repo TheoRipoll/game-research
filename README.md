@@ -21,12 +21,12 @@ Réaliser des recherches avec filtres
 Le DataSet est composé d'une collection (jeux vidéos) qui contient plusieurs documents comme le nom du jeu, la date de sortie, etc...
 C'est un fichier .csv que l'ont a converti en .json.
 
+# Liens utiles:
 
 ## [Lien vers le DataSet](https://www.kaggle.com/datasets/jummyegg/rawg-game-dataset)
-
-
-
-Concernant le rendu de notre projet, il se fera en local via un système de docker.
-TheoRipoll/game-research (github.com) 
-
 ## [Lien vers le google doc](https://docs.google.com/document/d/1hGoQPHgyRk2o9OG63m4dCfsCeRX2xMntCH-DWJ_GRF4/edit?usp=sharing)
+
+# Rendu du projet: 
+Il se fera en local via un système de docker. TheoRipoll/game-research (github.com) 
+
+
