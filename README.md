@@ -2,11 +2,11 @@
 
 # Collaborateurs: 
 
-RIPOL Theo
-DIALLO Mouhamed-Gando
-BRUNETTI Julien
-GALLICE Evan
-AAROUR Mouna
+* RIPOL Theo
+* DIALLO Mouhamed-Gando
+* BRUNETTI Julien
+* GALLICE Evan
+* AAROUR Mouna
 
 # Description
 Nous utiliserons le moteur MongoDB (obligatoire) et ElasticSearch pour ce projet.
@@ -22,12 +22,11 @@ Le DataSet est composé d'une collection (jeux vidéos) qui contient plusieurs d
 C'est un fichier .csv que l'ont a converti en .json.
 
 
-## [Liens vers le DataSet](https://www.kaggle.com/datasets/jummyegg/rawg-game-dataset).
+## [Lien vers le DataSet](https://www.kaggle.com/datasets/jummyegg/rawg-game-dataset).
 
 
 
 Concernant le rendu de notre projet, il se fera en local via un système de docker.
 TheoRipoll/game-research (github.com) 
 
-## Liens vers le google doc : 
-https://docs.google.com/document/d/1hGoQPHgyRk2o9OG63m4dCfsCeRX2xMntCH-DWJ_GRF4/edit?usp=sharing
+## [Lien vers le google doc](https://docs.google.com/document/d/1hGoQPHgyRk2o9OG63m4dCfsCeRX2xMntCH-DWJ_GRF4/edit?usp=sharing).
