@@ -17,7 +17,5 @@ public interface InterfaceServices<T extends ModelGameResearch>{
 
     void deleteAll();
 
-    void delete(T entity);
-
     T update(T entity);
 }

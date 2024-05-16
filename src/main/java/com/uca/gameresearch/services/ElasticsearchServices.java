@@ -1,12 +1,10 @@
 package com.uca.gameresearch.services;
 
 import com.uca.gameresearch.model.ElasticModel;
-import com.uca.gameresearch.model.ModelGameResearch;
 import com.uca.gameresearch.repositories.ElasticsearchGameResearchRepository;
-import com.uca.gameresearch.repositories.InterfaceRepositories;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +14,6 @@ import java.util.Optional;
 @Service
 public class ElasticsearchServices implements InterfaceServices<ElasticModel>{
 
-    private static final String INDEX = "api-game-infos";
-
     private final ElasticsearchGameResearchRepository elasticsearchGameResearchRepository;
 
     @Autowired
@@ -26,7 +22,14 @@ public class ElasticsearchServices implements InterfaceServices<ElasticModel>{
     }
 
     public List<ElasticModel> findAll() {
-        return (List<ElasticModel>) this.elasticsearchGameResearchRepository.findAll();
+        try {
+            assert this.elasticsearchGameResearchRepository != null;
+            Page<ElasticModel> page = (Page<ElasticModel>) this.elasticsearchGameResearchRepository.findAll();
+            return page.getContent();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Optional<ElasticModel> findById(String id) {
@@ -44,18 +47,27 @@ public class ElasticsearchServices implements InterfaceServices<ElasticModel>{
     }
 
     public void deleteById(String id) {
-        this.elasticsearchGameResearchRepository.deleteById(id);
+        try {
+            this.elasticsearchGameResearchRepository.deleteById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void deleteAll() {
-        this.elasticsearchGameResearchRepository.deleteAll();
-    }
-
-    public void delete(ElasticModel entity) {
-        this.elasticsearchGameResearchRepository.delete(entity);
+        try {
+            this.elasticsearchGameResearchRepository.deleteAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public ElasticModel update(ElasticModel entity) {
-        return this.elasticsearchGameResearchRepository.save(entity);
+        try {
+            return this.elasticsearchGameResearchRepository.save(entity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
